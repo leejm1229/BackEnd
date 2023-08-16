@@ -5,7 +5,8 @@
 	   "http://www.springframework.org/schema/beans 
 	    https://www.springframework.org/schema/beans/spring-beans.xsd"
 >
-	<bean id="h1" class="basic.Hello">
+	<bean id="h1" class="basic.Hello"></bean>	
+	<bean id="h2" class="basic.Hello"></bean>	
 		
-	</bean>	
+	
 </beans>

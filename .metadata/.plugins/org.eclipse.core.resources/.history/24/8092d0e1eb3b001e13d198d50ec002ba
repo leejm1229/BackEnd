@@ -1,0 +1,9 @@
+package basic.di;
+
+public class HankookTire implements Tire{
+
+	public String getTireBrand() {
+		return null;
+	}
+	
+}
