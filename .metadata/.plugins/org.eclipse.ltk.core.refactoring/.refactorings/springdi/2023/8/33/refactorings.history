@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename package &apos;springdi.basic&apos; to &apos;basic&apos;&#x0A;- Original project: &apos;springdi&apos;&#x0A;- Original element: &apos;springdi/src/main/java/springdi.basic&apos;&#x0A;- Renamed element: &apos;springdi/src/main/java/basic&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename package &apos;springdi.basic&apos;" flags="589830" hierarchical="false" id="org.eclipse.jdt.ui.rename.package" input="/src\/main\/java=/optional=/true=/=/maven.pomderived=/true=/&lt;springdi.basic" name="basic" qualified="false" references="true" stamp="1692149935151" textual="false" version="1.0"/>
+</session>
