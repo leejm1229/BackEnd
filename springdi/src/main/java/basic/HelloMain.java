@@ -1,27 +1,34 @@
 package basic;
 
+import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 public class HelloMain {
+    
+    public static void main(String[] args) {
 
-	public static void main(String[] args) {
-		
-		ApplicationContext context = new GenericXmlApplicationContext("basic-beanContainer.xml");
-		Hello h = (Hello)context.getBean("h1");
-		h.printHello();
-		
-		// 생성자는 한번만 출력된다.
-		Hello hh = (Hello)context.getBean("h1");
-		hh.printHello();
-		
-		// 이건 다른거기 때문에 생성자가 출력된다.
-		Hello hhh = (Hello)context.getBean("h2");
-		hhh.printHello();
-		
-		System.out.println(h);
-		System.out.println(hhh);
-
-	}
-
+//        Hello hello = new Hello();
+//        hello.printHello();
+        // 1. Spring Container 생성
+        // GenericXmlApplicationContext와 유사하게 동작하는 ClassPathXmlApplicationContext("basic-beanContainer.xml");
+        ApplicationContext context = 
+                new GenericXmlApplicationContext("basic-beanContainer.xml");
+        
+        // dependency 문법
+        Hello h = (Hello)context.getBean("h1");
+        
+        h.printHello();
+        
+        // bean이 한 개만 있을 때
+        Hello hh = context.getBean(Hello.class);
+        
+        hh.printHello();
+        
+        // 같은 bean이라는 뜻
+        System.err.println(h);
+        System.err.println(hh);
+    }
+    
+    
 }

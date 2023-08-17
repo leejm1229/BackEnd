@@ -1,0 +1,23 @@
+package di.test01;
+
+public class SamsungSpeaker implements Speaker {
+
+	@Override
+	public String volumeUp() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String volumeDown() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getBrand() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

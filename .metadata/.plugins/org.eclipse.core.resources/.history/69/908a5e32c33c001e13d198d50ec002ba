@@ -1,0 +1,16 @@
+package di.java;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.GenericXmlApplicationContext;
+
+public class DriverMain {
+    public static void main(String[] args) {
+
+        ApplicationContext context = 
+                new GenericXmlApplicationContext(Config.class);
+       
+        Car c = context.getBean("mycar", Car.class);
+        c.printTireBrand();
+    }
+
+}

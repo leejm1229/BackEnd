@@ -1,0 +1,36 @@
+package di.test01;
+
+public abstract class TV {
+    private Speaker leftSpeaker;
+    private Speaker rightSpeaker;
+
+    public TV(Speaker leftSpeaker, Speaker rightSpeaker) {
+        this.leftSpeaker = leftSpeaker;
+        this.rightSpeaker = rightSpeaker;
+    }
+
+    public void turnOn() {
+        System.out.println(getBrand() + " TV turned on");
+    }
+
+    public void turnOff() {
+        System.out.println(getBrand() + " TV turned off");
+    }
+
+    public void volumeUp() {
+        leftSpeaker.volumeUp();
+        rightSpeaker.volumeUp();
+    }
+
+    public void volumeDown() {
+        leftSpeaker.volumeDown();
+        rightSpeaker.volumeDown();
+    }
+
+    public void printSpeakerBrand() {
+        System.out.println("Left Speaker: " + leftSpeaker.getBrand());
+        System.out.println("Right Speaker: " + rightSpeaker.getBrand());
+    }
+
+    protected abstract String getBrand();
+}

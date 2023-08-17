@@ -1,0 +1,58 @@
+package di.test01;
+
+import org.springframework.stereotype.Component;
+
+@Component("LGTV")
+public class LGTV implements TV{
+	private Speaker leftSpeaker;
+	private Speaker rightSpeaker;
+
+	
+	
+	public Speaker getLeftSpeaker() {
+		return leftSpeaker;
+	}
+
+	public void setLeftSpeaker(Speaker leftSpeaker) {
+		this.leftSpeaker = leftSpeaker;
+	}
+
+	public Speaker getRightSpeaker() {
+		return rightSpeaker;
+	}
+
+	public void setRightSpeaker(Speaker rightSpeaker) {
+		this.rightSpeaker = rightSpeaker;
+	}
+
+	@Override
+	public void powerOn() {
+		System.out.println("LGTV 파워 온!!!");
+		
+	}
+
+	@Override
+	public void powerOff() {
+		System.out.println("LGTV 파워 오프!!!");
+		
+	}
+
+	@Override
+	public void volumeUp() {
+		System.out.println("LGTV 스피커 볼륨 업!!!");
+		
+	}
+
+	@Override
+	public void volumeDown() {
+		System.out.println("LGTV 스피커 볼륨 다운!!!");
+		
+	}
+
+	@Override
+	public void printSpeakerBrand() {
+		System.out.println("LGTV 입니다.");
+		
+	}
+
+}

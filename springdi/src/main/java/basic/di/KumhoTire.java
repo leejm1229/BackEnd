@@ -1,10 +1,11 @@
 package basic.di;
 
-public class KumhoTire implements Tire{
+public class KumhoTire implements Tire {
 
-	public String getTireBrand() {
-		return "금호타이어";
-	}
-
+	@Override
+    public String getTireBrand() {
+        // TODO Auto-generated method stub
+        return "금호타이어";
+    }
 
 }

@@ -1,0 +1,8 @@
+package di.test01;
+
+public interface Speaker {
+	
+	public String vloumeup();
+	public String volumedown();
+	public String getBrand();
+}

@@ -1,0 +1,16 @@
+package di.test01;
+
+public class SamsungTV extends TV{
+
+	public SamsungTV(Speaker leftSpeaker, Speaker rightSpeaker) {
+		super(leftSpeaker, rightSpeaker);
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	protected String getBrand() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

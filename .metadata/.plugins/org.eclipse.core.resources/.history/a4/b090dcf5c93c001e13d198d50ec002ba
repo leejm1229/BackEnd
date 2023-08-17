@@ -1,0 +1,40 @@
+package di.test01;
+
+public class SamsungTV implements TV{
+	private Speaker leftSpeaker;
+	private Speaker rightSpeaker;
+	
+	
+	@Override
+	public void powerOn() {
+		System.out.println("삼성TV 파원 온!!!");
+		
+	}
+
+	@Override
+	public void powerOff() {
+		System.out.println("삼성TV 파원 오프!!!");
+		
+	}
+
+	@Override
+	public void volumeUp() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void volumeDown() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void printSpeakerBrand() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	
+
+}
