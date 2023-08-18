@@ -3,18 +3,23 @@
   PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
-  <environments default="development">
-    <environment id="development">
-      <transactionManager type="JDBC"/>
-      <dataSource type="POOLED">
-        <property name="driver" value="oracle.jdbc.driver.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@dinkdb_high?TNS_ADMIN=/Users/lee/Wallet"/>
-        <property name="username" value="DA2314"/>
-        <property name="password" value="Data2314"/>
-      </dataSource>
-    </environment>
-  </environments>
-  <mappers>
-    <mapper resource="mapper/mapper1.xml"/>
-  </mappers>
+<typeAliases>
+   <typeAlias type="mybatis.BoardVO" alias="boardVO"/>
+   </typeAliases>
+	<environments default="development">
+		<environment id="development">
+			<transactionManager type="JDBC" />
+			<dataSource type="POOLED">
+				<property name="driver"
+					value="oracle.jdbc.driver.OracleDriver" />
+				<property name="url"
+					value="jdbc:oracle:thin:@localhost:1521:dink14" />
+				<property name="username" value="C##scott" />
+				<property name="password" value="tiger" />
+			</dataSource>
+		</environment>
+	</environments>
+	<mappers>
+		<mapper resource="mapper/mapper1.xml" />
+	</mappers>
 </configuration>
