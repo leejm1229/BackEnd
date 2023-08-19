@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation=
+	   "http://www.springframework.org/schema/beans 
+	    https://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+	<bean id="SamsungSpeaker" class="di.TV_Speaker02.SamsungSpeaker"></bean>
+	<bean id="BOSpeaker" class="di.TV_Speaker02.BOSpeaker"></bean>
+	
+	<bean id="Stv" class="di.TV_Speaker02.SamsungTV">
+		<property name="leftSpeaker" ref="SamsungSpeaker"></property>
+		<property name="rightSpeaker" ref="SamsungSpeaker"></property>
+	</bean>
+	
+	<bean id="Ltv" class="di.TV_Speaker02.LGTV">
+		<property name="leftSpeaker" ref="BOSpeaker"></property>
+		<property name="rightSpeaker" ref="BOSpeaker"></property>
+	</bean>
+</beans>
