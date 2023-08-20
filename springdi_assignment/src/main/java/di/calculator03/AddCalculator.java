@@ -1,5 +1,8 @@
 package di.calculator03;
 
+import org.springframework.stereotype.Component;
+
+@Component("addCalculator")
 public class AddCalculator implements Calculator {
 	
 	public AddCalculator() {
