@@ -1,9 +1,18 @@
 package di.calculator03;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
+@Component
 public class MyCalculator {
+	
+	@Value("${firstNum}")
 	private int firstNum;
+	
+	@Value("${secondNum}")
 	private int secondNum;
+	
+	
 	private Calculator calculator;
 	
 	public int getFirstNum() {

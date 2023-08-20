@@ -1,5 +1,8 @@
 package di.calculator03;
 
+import org.springframework.stereotype.Component;
+
+@Component("mulCalculator")
 public class MulCalculator implements Calculator {
 	
 	public MulCalculator() {

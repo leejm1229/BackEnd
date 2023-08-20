@@ -2,7 +2,7 @@ package di.calculator03;
 
 import org.springframework.stereotype.Component;
 
-@Component("DivideCalculator")
+@Component("divideCalculator")
 public class DivideCalculator implements Calculator {
 
 	public DivideCalculator() {
