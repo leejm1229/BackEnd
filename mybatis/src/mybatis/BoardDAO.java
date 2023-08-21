@@ -32,7 +32,7 @@ public class BoardDAO {
         // selectbyNo();
         
         // selectDSQL() -> DynamicSQL 
-        selectDSQL();
+//        selectDSQL();
         
         // insert 호출
         //insertNewPost();
@@ -44,6 +44,18 @@ public class BoardDAO {
         // deletebyName();
         
 //        selectDynamicSQLif();
+        selectDforeach();
+    }
+    
+    public void selectDforeach() {
+    	int[] a1 = {1,2,3,4,5,6};
+    	List<BoardVO> boardlist
+    	= sqlSession.selectList("mybatis.BoardDAO.selectDforeach1", a1);
+    	
+    	for (BoardVO board : boardlist){
+    		System.out.println(board);
+    	}
+    	
     }
     
     // select

@@ -12,6 +12,15 @@
 		order by no desc
 	</select>
 	
+	<select id="selectDforeach1" parameterType="int[]" resultType="boardVO">
+		select * from t_board
+		where no in 
+		<foreach collection="array" item="numbers" separator="," open="(" close=")">
+		
+			#{numbers}
+		</foreach>
+	</select>
+	
 	<select id="selectDSQLif1" parameterType="string">
 	 	select * from t board
 	 	<if test="title t_board != null"> 
@@ -21,7 +30,7 @@
 	 	</if>
 	</select>
 	
-	<select id="selectDSQLif2" parameterType="string">
+	<select id="selectDSQLif2">
 	 	select * from t board
 	 	<if test="title t_board != null"> 
 	 		<where>
