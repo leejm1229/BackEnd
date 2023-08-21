@@ -1,6 +1,9 @@
 package mybatis;
 
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
 import org.apache.ibatis.session.SqlSession;
 
 public class BoardDAO {
@@ -18,21 +21,29 @@ public class BoardDAO {
     public void work() {    
         
         // select all 호출
-         selectNewPost();
+        // selectNewPost();
         
-        // select byName 호출
-//        selectbyName();
-    	
-//         select byName2 호출
-//         selectbyName2();
+        // select byName 호출 ver1 -> 김길동
+        // selectbyName();
         
-    	// selectbyNo 호출 
-//    	selectbyNo();
-    	
+        // select byName 호출 ver2 -> 김관중
+        // selectbyName2();
+        
+        // selectbyNo();
+        
+        // selectDSQL() -> DynamicSQL 
+        selectDSQL();
+        
         // insert 호출
-//        insertNewPost();
-//    	updateNo();
-//    	deleteNo();
+        //insertNewPost();
+        
+        // update
+        //updatebyName();
+    
+        // delete
+        // deletebyName();
+        
+//        selectDynamicSQLif();
     }
     
     // select
@@ -55,20 +66,40 @@ public class BoardDAO {
         for(BoardVO board : boardList) {
             System.out.println(board);
         }
+        
     }
     
     public void selectbyName2() {
+        String name = "김관중";
+        
         List<BoardVO> boardList = 
-                sqlSession.selectList("mybatis.BoardDAO.selectbyName2", "김길동");
+                sqlSession.selectList("mybatis.BoardDAO.selectbyName2", name);
         
         for(BoardVO board : boardList) {
             System.out.println(board);
         }
+        
     }
     
     public void selectbyNo() {
+        int no = 10;
+        
+        Map<String, Object> boardMap = 
+                sqlSession.selectOne("mybatis.BoardDAO.selectbyNo2", no);
+        
+        Set<String> keyset = boardMap.keySet();
+        for(String key : keyset) {
+            System.out.println(key + " : " + boardMap.get(key));
+        }
+    }
+    
+    public void selectDSQL() {
+        BoardVO boardVO = new BoardVO();
+        // boardVO.setWriter("김길동");
+        boardVO.setTitle("두번째 제목");
+        
         List<BoardVO> boardList = 
-                sqlSession.selectList("mybatis.BoardDAO.selectbyNo", 10);
+                sqlSession.selectList("mybatis.BoardDAO.selectDSQL", boardVO);
         
         for(BoardVO board : boardList) {
             System.out.println(board);
@@ -89,16 +120,25 @@ public class BoardDAO {
     }
     
     // update
-    public void updateNo() {	
-    	sqlSession.update("mybatis.BoardDAO.updatebyNo", 5);
-    	sqlSession.commit();
+    public void updatebyName() {
+        String name = "김관중";
+        sqlSession.update("mybatis.BoardDAO.updatebyName", name);
+        sqlSession.commit();
     }
     
- // delete
-    public void deleteNo() {
-    	sqlSession.update("mybatis.BoardDAO.deletebyNo", 3);
-    	sqlSession.commit();
+    // delete
+    public void deletebyName() {
+        String name = "김관중";
+        sqlSession.update("mybatis.BoardDAO.deletebyName", name);
+        sqlSession.commit();
     }
     
+    public void selectDynamicSQLif() {
+     	List<BoardVO> boardList = sqlSession.selectList("mybatis.BoardDAO.selctDSQLif1", "좋은아침");
+    	
+    	for(BoardVO boardVO : boardList) {
+    		System.out.println(boardVO);
+    	}
+    }
 
 }

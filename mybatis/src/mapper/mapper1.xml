@@ -3,58 +3,94 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="mybatis.BoardDAO">
-   <resultMap type="mybatis.BoardVO" id="boardMap">
-      <result column="reg_date" property="regDate"/>
-   </resultMap>
-   <!-- SELECT -->
-   <select id="selectAll" resultMap="boardMap">
-      select * from t_board 
-      order by no desc
-   </select>
-   
-   <!-- parameterType은 생략 가능 -->
-   <select id="selectbyName" parameterType="boardVO" resultMap="boardMap">
-      select * from t_board
-      where writer = #{writer}
-   </select>
-   
-   <select id="selectbyName2" parameterType="String" resultType="boardVO">
-      select * from t_board
-      where writer = #{other}
-   </select>
-   
-   <select id="selectbyNo" parameterType="int" resultType="boardVO">
-      select * from t_board
-      where no = #{other}
-   </select>
-   
-   <select id="selectbyNo2" parameterType="int" resultType="map">
-      select * from t_board
-      where no = #{other}
-   </select>
-   
-   <!-- INSERT -->
-   <insert id="insertNewPost">
-      insert into t_board (no, title, writer, content)
-      values (seq_t_board_no.nextval, '오늘의 날씨', '김관중', '오늘 날씨 맑음') 
-   </insert>
-   
-   <insert id="insertNewPost2" parameterType="mybatis.BoardVO">
-      insert into t_board (no, title, writer, content)
-      values (seq_t_board_no.nextval, #{title}, #{writer}, #{content}) 
-   </insert>
-   
-   <!-- UPDATE -->
-   <update id="updatebyNo" parameterType="int" >
-      UPDATE t_board
-      SET TITLE = '수정된 제목'
-      WHERE no = #{no}
-   </update>
-   
-   <!-- delete -->
-   <update id="deletebyNo" parameterType="int" >
-      delete from t_board
-      WHERE no = #{no}
-   </update>
-   
+	<resultMap type="mybatis.BoardVO" id="boardMap">
+		<result column="reg_date" property="regDate"/>
+	</resultMap>
+	<!-- SELECT -->
+	<select id="selectAll" resultType="boardVO">
+		select * from t_board 
+		order by no desc
+	</select>
+	
+	<select id="selectDSQLif1" parameterType="string">
+	 	select * from t board
+	 	<if test="title t_board != null"> 
+	 		<where>
+	 			title = #{abc}
+	 		</where>
+	 	</if>
+	</select>
+	
+	<select id="selectDSQLif2" parameterType="string">
+	 	select * from t board
+	 	<if test="title t_board != null"> 
+	 		<where>
+	 			title = #{abc}
+	 		</where>
+	 	</if>
+	</select>
+	
+	
+	<!-- parameterType은 생략 가능 -->
+	<select id="selectbyName" parameterType="boardVO" resultMap="boardMap">
+		select * from t_board
+		where writer = #{writer}
+	</select>
+	
+	
+	<select id="selectbyName2" parameterType="String" resultType="boardVO">
+		select * from t_board
+		where writer = #{other}
+	</select>
+	
+	
+	<select id="selectbyNo" parameterType="int" resultType="boardVO">
+		select * from t_board
+		where no = #{other}
+	</select>
+	
+	<select id="selectbyNo2" parameterType="int" resultType="map">
+		select * from t_board
+		where no = #{other}
+	</select>
+	
+	
+	<select id = "selectDSQL" parameterType="boardVO" resultMap="boardMap">
+		select * from t_board
+		<where>
+			<if test="writer != null">
+				writer like #{writer}
+			</if>
+			<if test="title != null">
+				and title like #{title}
+			</if>
+		</where>
+	</select>
+	
+	
+	<!-- INSERT -->
+	<insert id="insertNewPost">
+		insert into t_board (no, title, writer, content)
+		values (seq_t_board_no.nextval, '오늘의 날씨', '김관중', '오늘 날씨 맑음') 
+	</insert>
+	
+	<insert id="insertNewPost2" parameterType="mybatis.BoardVO">
+		insert into t_board (no, title, writer, content)
+		values (seq_t_board_no.nextval, #{title}, #{writer}, #{content}) 
+	</insert>
+	
+	 
+	<!-- UPDATE -->
+	<update id="updatebyName" parameterType="String" >
+		UPDATE t_board
+		SET TITLE = '변경되었지롱'
+		WHERE WRITER = #{other}
+	</update>
+	
+	
+	<!-- DELETE -->
+	<delete id="deletebyName" parameterType="String">
+		DELETE FROM t_board
+		WHERE WRITER = #{other}
+	</delete>
 </mapper>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation=
+	   "http://www.springframework.org/schema/beans 
+	    https://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+	<bean id="addCalculator" class="di.calculator02.AddCalculator"/>
+    <bean id="subCalculator" class="di.calculator02.SubCalculator"/>
+    <bean id="mulCalculator" class="di.calculator02.MulCalculator"/>
+    <bean id="divideCalculator" class="di.calculator02.DivideCalculator"/>
+
+    <bean id="add" class="di.calculator02.MyCalculator">
+        <property name="firstNum" value="20"/>
+        <property name="secondNum" value="9"/>
+        <property name="calculator" ref="addCalculator"/> 
+    </bean>
+    
+    <bean id="sub" class="di.calculator02.MyCalculator">
+        <property name="firstNum" value="48"/>
+        <property name="secondNum" value="31"/>
+        <property name="calculator" ref="addCalculator"/> 
+    </bean>
+    
+    <bean id="mul" class="di.calculator02.MyCalculator">
+        <property name="firstNum" value="9"/>
+        <property name="secondNum" value="8"/>
+        <property name="calculator" ref="addCalculator"/> 
+    </bean>
+    
+    <bean id="div" class="di.calculator02.MyCalculator">
+        <property name="firstNum" value="60"/>
+        <property name="secondNum" value="5"/>
+        <property name="calculator" ref="addCalculator"/> 
+    </bean>
+  
+	
+</beans>

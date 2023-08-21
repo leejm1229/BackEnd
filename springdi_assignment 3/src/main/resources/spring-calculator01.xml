@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation=
+	   "http://www.springframework.org/schema/beans 
+	    https://www.springframework.org/schema/beans/spring-beans.xsd"
+>
+	<bean id="addCalculator" class="di.calculator01.AddCalculator"/>
+    <bean id="subCalculator" class="di.calculator01.SubCalculator"/>
+    <bean id="mulCalculator" class="di.calculator01.MulCalculator"/>
+    <bean id="divideCalculator" class="di.calculator01.DivideCalculator"/>
+
+    <bean id="add" class="di.calculator01.MyCalculator">
+        <constructor-arg index="0" value="20"/>
+        <constructor-arg index="1" value="9"/>
+        <constructor-arg name="calculator" ref="addCalculator"/> 
+    </bean>
+    
+    <bean id="sub" class="di.calculator01.MyCalculator">
+        <constructor-arg name="firstNum" value="48"/>
+        <constructor-arg name="secondNum" value="31"/>
+        <constructor-arg name="calculator" ref="subCalculator"/> 
+    </bean>
+    
+    <bean id="mul" class="di.calculator01.MyCalculator">
+        <constructor-arg name="firstNum" value="9"/>
+        <constructor-arg name="secondNum" value="8"/>
+        <constructor-arg name="calculator" ref="mulCalculator"/> 
+    </bean>
+    
+    <bean id="div" class="di.calculator01.MyCalculator">
+        <constructor-arg name="firstNum" value="60"/>
+        <constructor-arg name="secondNum" value="5"/>
+        <constructor-arg name="calculator" ref="divideCalculator"/> 
+    </bean>
+  
+	
+</beans>
