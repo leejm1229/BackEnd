@@ -12,17 +12,18 @@ public class MethodController2 {
     public MethodController2(){
         System.out.println("MethodController 생성");
     }
-    // doGet()
-    @GetMapping("/method/method")
-    public String get() {
-        System.out.println("get들어옴");
-        return "method/methodForm";
-    }
     
-    // doPost()
-    @PostMapping("/method/method")
-    public String post() {
-        System.out.println("요청 받음");
-        return "method/methodProcess";
-    }
+//    // doGet()
+//    @GetMapping("/method/method")
+//    public String get() {
+//        System.out.println("get들어옴");
+//        return "method/methodForm";
+//    }
+//    
+//    // doPost()
+//    @PostMapping("/method/method")
+//    public String post() {
+//        System.out.println("요청 받음");
+//        return "method/methodProcess";
+//    }
 }
