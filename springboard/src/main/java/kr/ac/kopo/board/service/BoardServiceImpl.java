@@ -10,7 +10,7 @@ import kr.ac.kopo.board.vo.BoardVO;
 
 
 @Service
-public class BoardServiceImpl implements boardService {
+public class BoardServiceImpl implements BoardService {
 
 	@Autowired
 	private BoardDAO boardDAO;

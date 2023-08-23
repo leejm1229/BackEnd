@@ -4,7 +4,7 @@ import java.util.List;
 
 import kr.ac.kopo.board.vo.BoardVO;
 
-public interface boardService {
-	List<BoardVO> getAllBoard();
-	
+public interface BoardService {
+	public List<BoardVO> getAllBoard();
+
 }

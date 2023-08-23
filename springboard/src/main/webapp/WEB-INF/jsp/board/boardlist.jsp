@@ -7,6 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	전체 게시판입니다.
+	전체 게시판입니다.<br>
+	
+	${boardlist }
+	
 </body>
 </html>
