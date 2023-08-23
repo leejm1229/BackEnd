@@ -9,5 +9,6 @@
 <body>
 	hello.jsp 입니당:)
 	welcome message - ${msg}
+	pathVariable = ${n }
 </body>
 </html>
