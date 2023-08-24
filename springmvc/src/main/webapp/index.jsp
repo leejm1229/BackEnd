@@ -1,23 +1,14 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="EUC-KR">
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
-<h1>ÇÑ±ÛÀÓ</h1>
-<!-- http://localhost:8080/springmvc/hello/hello  -->
-<a href ="<%= request.getContextPath()%>/hello/hello">hello.jsp·Î °¥·¡¿ë~?</a>
-<a href="${pageContext.request.contextPath}/hello/hello">el¹öÀü hello.jsp·Î °¥·¡¿ë~?</a>
+í™˜ì˜í•´ìš”~!~!~!~! ì²« í˜ì´ì§€ì§€ë¡±!
 
-<a href="${pageContext.request.contextPath}/method/method">el¹öÀü methodForm.jsp·Î °¥·¡¿ë~?</a>
-
-<a href="${pageContext.request.contextPath}/member/joinform">È¸¿ø°¡ÀÔ ÇÏ·¯ °¥·¡¿ë~?</a>
-<a href="${pageContext.request.contextPath}/stringresponse">½ºÆ®¸µ</a>
-<a href="${pageContext.request.contextPath}/voresponse">memberVOresponseBody</a>
-<a href="${pageContext.request.contextPath}/hello/3">pathVariable</a>
-<a href="${pageContext.request.contextPath}/file/upload">FileUpload</a>
+<a href="${pageContext.request.contextPath}/board"> ê²Œì‹œíŒ </a>
 </body>
 </html>

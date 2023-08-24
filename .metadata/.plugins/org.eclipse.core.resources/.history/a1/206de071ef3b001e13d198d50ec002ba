@@ -1,7 +1,0 @@
-package di.xml01;
-
-// 스프링으로 작업 
-public class DriverMain {
-	
-
-}

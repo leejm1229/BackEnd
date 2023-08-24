@@ -1,7 +1,0 @@
-package ldi.xml01;
-
-public interface Tire {
-	
-	String getTireBrand();
-
-}
