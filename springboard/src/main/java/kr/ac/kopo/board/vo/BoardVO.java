@@ -1,9 +1,17 @@
 package kr.ac.kopo.board.vo;
 
+import javax.validation.constraints.NotEmpty;
+
 public class BoardVO {
     private int no;
+    
+    @NotEmpty
     private String title;
+    
+    @NotEmpty
     private String writer;
+    
+    @NotEmpty
     private String content;
     private String regDate;
     private int count;
