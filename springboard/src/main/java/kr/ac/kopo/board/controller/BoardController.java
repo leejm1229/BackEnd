@@ -60,11 +60,13 @@ public class BoardController {
     public String newPostProcess(@Valid BoardVO boardVO, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {
             System.out.println("null 값이 있습니다.");
-            return "board/boardlist";
+            return "board/writeForm";
         } else {
             boardService.writeNewPost(boardVO);
 
             return "redirect:/board";
         }
     }
+    
+    
 }

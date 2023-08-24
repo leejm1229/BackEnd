@@ -6,6 +6,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.error{
+		color : red;
+	}
+	
+</style>
 </head>
 <body>
 새 글입니다.
@@ -16,14 +22,17 @@
 				<tr>
 					<th>제목</th>
 					<td><form:input path="title"/></td>
+					<td><form:errors path="title" class="error"/></td>
 				</tr>
 				<tr>
 					<th>글쓴이</th>
 					<td><form:input path="writer"/></td>
+					<td><form:errors path="writer" class="error"/></td>
 				</tr>
 				<tr>
 					<th>내용</th>
 					<td><form:input path="content"/></td>
+					<td><form:errors path="content" class="error"/></td>
 				</tr>
 			</table>
 			<input type="submit" value="글쓰기">
