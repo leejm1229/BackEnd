@@ -17,7 +17,7 @@
 		<form:form action="${pageContext.request.contextPath}/login" method="post" modelAttribute="loginVO">
 			id : <form:input path="id"/><form:errors path="id"/><br>	
 			password: <form:input path="password"/><form:errors path="password"/> <br>
-			<input type="submit" value="회원가입">
+			<input type="submit" value="로그인">
 		</form:form>
 	</div>
 </body>

@@ -17,4 +17,8 @@ public class MemberDAO {
                 sqlSessionTemplate.selectOne("springboard.member.dao.MemberDAO.login", loginVO);
         return memberVO;
     }
+    
+    public void register(MemberVO memberVO) {
+        sqlSessionTemplate.insert("springboard.member.dao.MemberDAO.register", memberVO);
+    }
 }
