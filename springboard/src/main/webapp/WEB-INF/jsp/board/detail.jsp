@@ -6,53 +6,85 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script
+  src="https://code.jquery.com/jquery-3.7.0.js"></script>
+<script type="text/javascript">
+   $(document).ready(function(){
+      $('#replyAddButton').click(function(){
+         
+         let replyContent = document.reply.content.value;
+         let replyWriter = document.reply.writer.value;
+         //alert('클릭성공')
+         $.ajax({
+            url    : '${pageContext.request.contextPath}/reply',
+            method    : 'post',
+            data    : {
+               boardNo : ${boardVO.no},
+               content   : replyContent,
+               writer   : replyWriter,
+               
+            },
+            success   : function(){          
+               alert('성공')
+               document.replyForm.content.value = "";
+               document.replyForm.writer.value = "";
+            },
+            error    : function(){
+               alert('실패')
+            }
+         })
+      })
+   })
+</script>
 </head>
 <body>
 <a href = "${pageContext.request.contextPath}/"> 
-		<img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA3MDVfODYg%2FMDAxNjg4NTQ1MDI3ODMw.A2fJ1QMSdgIs0x72f_ELjZ84R5jkESa2jPlZb_iG_Ukg.79RJuN7Psj4mrphOdMVE9EvM0yvIovezyv_rwkLg-rUg.JPEG.gursoa%2F6.jpg&type=a340">
-	</a>
-	<a href="${pageContext.request.contextPath}/board">게시판</a>
-	<a href="${pageContext.request.contextPath}/board/new"> 새글쓰기 </a>
-	
-	<c:if test = "${empty currentUser }">
-		<a href="${pageContext.request.contextPath}/login"> 로그인 </a>
-		<a href="${pageContext.request.contextPath}/register">회원가입 </a>
-	</c:if>
-	<c:if test = "${not empty currentUser }">
-		${currentUser.name }님 안녕하세요.
-		<a href="${pageContext.request.contextPath}/logout"> 로그아웃 </a>
-	</c:if>
+      <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA3MDVfODYg%2FMDAxNjg4NTQ1MDI3ODMw.A2fJ1QMSdgIs0x72f_ELjZ84R5jkESa2jPlZb_iG_Ukg.79RJuN7Psj4mrphOdMVE9EvM0yvIovezyv_rwkLg-rUg.JPEG.gursoa%2F6.jpg&type=a340">
+   </a>
+   <a href="${pageContext.request.contextPath}/board">게시판</a>
+   <a href="${pageContext.request.contextPath}/board/new"> 새글쓰기 </a>
+   
+   <c:if test = "${empty currentUser }">
+      <a href="${pageContext.request.contextPath}/login"> 로그인 </a>
+      <a href="${pageContext.request.contextPath}/register">회원가입 </a>
+   </c:if>
+   <c:if test = "${not empty currentUser }">
+      ${currentUser.name }님 안녕하세요.
+      <a href="${pageContext.request.contextPath}/logout"> 로그아웃 </a>
+   </c:if>
 게시판 상세페이지
-	<div align="center">
-		<table border = "1" width = "60%">
-			<tr>
-				<th>번호</th>
-				<th>제목</th>
-				<th>지은이</th>
-				<th>내용</th>
-				<th>작성일</th>
-				<th>조회수</th>
-			</tr>
-			<tr>
-				<td>${boardVO.no}</td>
-				<td>${boardVO.title}</td>
-				<td>${boardVO.writer}</td>
-				<td>${boardVO.content}</td>
-				<td>${boardVO.regDate}</td>
-				<td>${boardVO.count}</td>
-			</tr>
-		</table>
-		
-		<input type="button" value="Home" onclick="location.href='${pageContext.request.contextPath}/'">
-		<input type="button" value="목록으로" onclick="location.href='${pageContext.request.contextPath}/board'">
-		<input type="button" value="삭제" onclick="location.href='${pageContext.request.contextPath}/'">
-	</div>
-	<div>
-		<form>
-			댓글 : <input type="text" size="100" name="content">
-			작성자 : <input type="text" size="20" name="writer">
-			<input type ="button" value="댓글쓰기">
-		</form>
-	</div>
+   <div align="center">
+      <table border = "1" width = "60%">
+         <tr>
+            <th>번호</th>
+            <th>제목</th>
+            <th>지은이</th>
+            <th>내용</th>
+            <th>작성일</th>
+            <th>조회수</th>
+         </tr>
+         <tr>
+            <td>${boardVO.no}</td>
+            <td>${boardVO.title}</td>
+            <td>${boardVO.writer}</td>
+            <td>${boardVO.content}</td>
+            <td>${boardVO.regDate}</td>
+            <td>${boardVO.count}</td>
+         </tr>
+      </table>
+      
+      <input type="button" value="Home" onclick="location.href='${pageContext.request.contextPath}/'">
+      <input type="button" value="목록으로" onclick="location.href='${pageContext.request.contextPath}/board'">
+      <input type="button" value="삭제" onclick="location.href='${pageContext.request.contextPath}/'">
+   </div>
+   <div>
+   <form name ="reply">
+
+      댓글: <input type="text" size="100" name="content">
+      작성자: <input type="text" size="20" name="writer">
+      <input type="button" value="댓글쓰기" id = "replyAddButton">
+   </form>
+      
+   </div>
 </body>
 </html>
