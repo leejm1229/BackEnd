@@ -9,7 +9,44 @@
 <script
   src="https://code.jquery.com/jquery-3.7.0.js"></script>
 <script type="text/javascript">
+   function showReplyList(){
+      // 1. ajax reply list select
+      // 2. 화면에 보여줘!
+      
+      $.ajax({
+         url    : '${pageContext.request.contextPath}/reply/${boardVO.no}',
+         method    : 'get',
+         success : function(data){
+            alert('showReplyList 성공')
+            console.log(data)
+            console.log(typeof data)
+            $('#replyList').empty();
+            
+            $(data).each(function(){
+               str = '<hr>';
+               str += '<strong>' + this.content + '</strong>';
+               str += '&nbsp;' + this.writer +'&nbsp;';
+               str += '&nbsp;' + this.regDate + '&nbsp;';
+               str += '<button type class = "delBtn" id = ' + this.no + '>삭제 </button>';
+               
+               $('#replyList').append(str)
+            })
+            // 보여줄 것
+         },
+         error    : function(){
+            
+            alert('showReplyList 실패')
+         }
+      })
+      
+   }
    $(document).ready(function(){
+      showReplyList();
+      
+      $(document).on('click', '.delBtn', function(){
+    	  alert('쉬는시간')
+      })
+      
       $('#replyAddButton').click(function(){
          
          let replyContent = document.reply.content.value;
@@ -24,12 +61,14 @@
                writer   : replyWriter,
                
             },
-            success   : function(){          
-               alert('성공')
-               document.replyForm.content.value = "";
-               document.replyForm.writer.value = "";
+            success   : function(){
+               alert('성공');
+               document.reply.content.value = "";
+               document.reply.writer.value = "";
+               showReplyList();
             },
             error    : function(){
+               
                alert('실패')
             }
          })
@@ -39,7 +78,7 @@
 </head>
 <body>
 <a href = "${pageContext.request.contextPath}/"> 
-      <img src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyMzA3MDVfODYg%2FMDAxNjg4NTQ1MDI3ODMw.A2fJ1QMSdgIs0x72f_ELjZ84R5jkESa2jPlZb_iG_Ukg.79RJuN7Psj4mrphOdMVE9EvM0yvIovezyv_rwkLg-rUg.JPEG.gursoa%2F6.jpg&type=a340">
+      <img src="https://blog.kakaocdn.net/dn/cadAZd/btqwUCGSDXw/sw1BupJqV7jZWvTj1jNdk1/img.jpg" style="width:300px;">
    </a>
    <a href="${pageContext.request.contextPath}/board">게시판</a>
    <a href="${pageContext.request.contextPath}/board/new"> 새글쓰기 </a>
@@ -84,6 +123,9 @@
       작성자: <input type="text" size="20" name="writer">
       <input type="button" value="댓글쓰기" id = "replyAddButton">
    </form>
+      
+   </div>
+   <div id="replyList">
       
    </div>
 </body>
