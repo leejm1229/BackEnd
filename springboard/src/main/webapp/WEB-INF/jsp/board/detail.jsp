@@ -49,7 +49,7 @@
 
     	  
     	  $.ajax({
-    		  url : '${pageContext.request.contextPath}/reply/'+replyNo,
+    		  url : '${pageContext.request.contextPath}/reply/${boardVO.no}/' + replyNo,
     		  method : 'delete',
     		  success : function(){
     			  showReplyList();
