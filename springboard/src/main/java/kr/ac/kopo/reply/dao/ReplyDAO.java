@@ -19,7 +19,7 @@ public class ReplyDAO {
 	}
 
 	public List<ReplyVO> getReplybyBoardNo(int bno) {
-		List<ReplyVO> replylist = sqlSessionTemplate.selectList("springboard.replyDAO.selctByBoardNo", bno);
+		List<ReplyVO> replylist = sqlSessionTemplate.selectList("springboard.replyDAO.selectByBoardNo", bno);
 		return replylist;
 	}
 }
