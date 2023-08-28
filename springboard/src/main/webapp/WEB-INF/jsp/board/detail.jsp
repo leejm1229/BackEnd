@@ -17,7 +17,6 @@
          url    : '${pageContext.request.contextPath}/reply/${boardVO.no}',
          method    : 'get',
          success : function(data){
-            alert('showReplyList 성공')
             console.log(data)
             console.log(typeof data)
             $('#replyList').empty();
@@ -43,15 +42,28 @@
    $(document).ready(function(){
       showReplyList();
       
+      
       $(document).on('click', '.delBtn', function(){
-    	  alert('쉬는시간')
+    	  
+    	  let replyNo = $(this).attr('id');
+
+    	  
+    	  $.ajax({
+    		  url : '${pageContext.request.contextPath}/reply/'+replyNo,
+    		  method : 'delete',
+    		  success : function(){
+    			  showReplyList();
+    		  },
+    		  error : function(){
+    			  alert('delete 실패')
+    		  }
+    	  })
       })
       
       $('#replyAddButton').click(function(){
          
          let replyContent = document.reply.content.value;
          let replyWriter = document.reply.writer.value;
-         //alert('클릭성공')
          $.ajax({
             url    : '${pageContext.request.contextPath}/reply',
             method    : 'post',
@@ -62,7 +74,6 @@
                
             },
             success   : function(){
-               alert('성공');
                document.reply.content.value = "";
                document.reply.writer.value = "";
                showReplyList();

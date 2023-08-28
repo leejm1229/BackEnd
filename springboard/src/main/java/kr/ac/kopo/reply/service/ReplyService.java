@@ -22,4 +22,8 @@ public class ReplyService {
 		List<ReplyVO> replylist = replyDAO.getReplybyBoardNo(bno);
 		return replylist;
 	}
+	
+	public void deleteReplyByNo(int replyNo) {
+		replyDAO.deleteReplyByNo(replyNo);
+	}
 }

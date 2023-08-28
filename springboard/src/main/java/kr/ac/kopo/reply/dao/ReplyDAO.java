@@ -22,4 +22,8 @@ public class ReplyDAO {
 		List<ReplyVO> replylist = sqlSessionTemplate.selectList("springboard.replyDAO.selectByBoardNo", bno);
 		return replylist;
 	}
+
+	public void deleteReplyByNo(int replyNo) {
+		sqlSessionTemplate.delete("springboard.replyDAO.deleteReplyByNo", replyNo);
+	}
 }
