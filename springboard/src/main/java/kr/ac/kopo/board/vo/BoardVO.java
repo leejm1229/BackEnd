@@ -4,14 +4,11 @@ import javax.validation.constraints.NotEmpty;
 
 public class BoardVO {
     private int no;
-    
-    @NotEmpty(message = "title이 비어있습니다.")
+    @NotEmpty(message= "제목없음")
     private String title;
-    
-    @NotEmpty(message = "필수항목")
+    @NotEmpty(message= "지은이없음")
     private String writer;
-    
-    @NotEmpty(message = "필수항목")
+    @NotEmpty(message= "내용없음")
     private String content;
     private String regDate;
     private int count;

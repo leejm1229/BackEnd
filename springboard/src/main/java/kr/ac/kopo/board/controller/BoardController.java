@@ -18,55 +18,59 @@ import kr.ac.kopo.board.vo.BoardVO;
 
 @Controller
 public class BoardController {
-
+    
     @Autowired
     private BoardService boardService;
-
-    //    @GetMapping("/post")
-    @GetMapping("/board/{no}")
-    public String getPostByNo(@PathVariable("no") int no,
-                              Model model) {
-        BoardVO boardVO = boardService.getPostByNo(no);
-        model.addAttribute("boardVO", boardVO);
-        return "board/detail";
-    }
-    //    @GetMapping("/post")
-//    public String getPostByNo(@RequestParam("no") int no,
-//                              Model model) {
+    
+//    @GetMapping("/post")
+//    public String getPostbyNo(@RequestParam("no") int no,
+//            Model model) {
 //        BoardVO boardVO = boardService.getPostByNo(no);
 //        model.addAttribute("boardVO", boardVO);
 //        return "board/detail";
 //    }
-
-    @GetMapping("/board")
-    public ModelAndView getAllBoard() {
-        ModelAndView modelAndView = new ModelAndView("board/boardlist");
-        List<BoardVO> boardList = boardService.getAllBoard();
-        modelAndView.addObject("boardlist", boardList);
-        return modelAndView;
-    }
-
-    @GetMapping("/board/new")
-    public String newPost(Model model) {
-
-        BoardVO boardVO = new BoardVO();
-        boardVO.setTitle("기본제목");
+    
+    @GetMapping("/board/{no}")
+    public String getPostbyNo(@PathVariable("no") int no,
+            Model model) {
+        BoardVO boardVO = boardService.getPostByNo(no);
         model.addAttribute("boardVO", boardVO);
-
-        return "board/writeForm";
-    }
-
-    @PostMapping("/board/new")
-    public String newPostProcess(@Valid BoardVO boardVO, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            System.out.println("null 값이 있습니다.");
-            return "board/writeForm";
-        } else {
-            boardService.writeNewPost(boardVO);
-
-            return "redirect:/board";
-        }
+        return "board/detail";
     }
     
+    @GetMapping("/board")
+    public ModelAndView getAllBoard() {
+        
+        ModelAndView mav = new ModelAndView("board/boardlist");
+        
+        List<BoardVO> boardlist = boardService.getAllBoard();
+        
+        mav.addObject("boardlist", boardlist);
+        return mav;
+    }
+    
+    
+    @GetMapping("/board/new")
+    public String newPost(Model model) {
+        BoardVO boardVO = new BoardVO();
+        boardVO.setTitle("기본제목");
+        model.addAttribute(boardVO);
+        
+        return "board/writeForm";
+    }
+    
+    @PostMapping("/board/new")
+    public String postNewPost(@Valid BoardVO boardVO, BindingResult br) {
+        //boardService에 일을 시킬거야~
+        
+        if(br.hasErrors()){
+            System.out.println("에러가 있음");
+            return "board/boardlist";
+        }else {
+            boardService.writeNewPost(boardVO);
+            return "redirect:/board";
+        }
+        
+    }
     
 }

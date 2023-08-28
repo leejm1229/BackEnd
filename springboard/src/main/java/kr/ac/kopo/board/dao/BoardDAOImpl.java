@@ -11,32 +11,29 @@ import kr.ac.kopo.board.vo.BoardVO;
 @Repository
 public class BoardDAOImpl implements BoardDAO {
 
-    @Autowired
-    private SqlSessionTemplate sqlSessionTemplate;
-    
-    @Override
-    public List<BoardVO> getAllPost() {
-        
-        List<BoardVO> boardlist =
-                sqlSessionTemplate.selectList("springboard.board.dao.BoardDAO.selectAll");
-        // sql문의 이름 mapper.xml
-        
-        
-        return boardlist;
-    }
+	@Autowired
+	private SqlSessionTemplate sqlSessionTemplate;
 
-    @Override
-    public BoardVO getPostByNo(int no) {
-        // TODO Auto-generated method stub
-        BoardVO boardVO = sqlSessionTemplate.selectOne("springboard.board.dao.BoardDAO.selectbyNo", no);
-        return boardVO;
-    }
+	@Override
+	public List<BoardVO> getAllPost() {
 
-    @Override
-    public void writeNewPost(BoardVO boardVO) {
-        // TODO Auto-generated method stub
-        sqlSessionTemplate.insert("springboard.board.dao.BoardDAO.insert", boardVO);
-    }
-    
+		List<BoardVO> boardlist = sqlSessionTemplate.selectList("springboard.board.dao.BoardDAO.selectAll");
+		// sql문의 이름 mapper.xml
+
+		return boardlist;
+	}
+
+	@Override
+	public BoardVO getPostByNo(int no) {
+		// TODO Auto-generated method stub
+		BoardVO boardVO = sqlSessionTemplate.selectOne("springboard.board.dao.BoardDAO.selectbyNo", no);
+		return boardVO;
+	}
+
+	@Override
+	public void writeNewPost(BoardVO boardVO) {
+		// TODO Auto-generated method stub
+		sqlSessionTemplate.insert("springboard.board.dao.BoardDAO.insert", boardVO);
+	}
 
 }
