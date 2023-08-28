@@ -30,11 +30,6 @@ public class ReplyController {
 	@ResponseBody
 	public List<ReplyVO> getAllReply(@PathVariable("bno") int bno) {
 		List<ReplyVO> replylist = replyService.getReplybyBoardNo(bno);
-		
-		for(ReplyVO replyVO : replylist) {
-			System.out.println(replyVO);
-		}
-		
 		return replylist;
 	}
 	

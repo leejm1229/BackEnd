@@ -25,15 +25,18 @@ public class BoardDAOImpl implements BoardDAO {
 
 	@Override
 	public BoardVO getPostByNo(int no) {
-		// TODO Auto-generated method stub
 		BoardVO boardVO = sqlSessionTemplate.selectOne("springboard.board.dao.BoardDAO.selectbyNo", no);
 		return boardVO;
 	}
 
 	@Override
 	public void writeNewPost(BoardVO boardVO) {
-		// TODO Auto-generated method stub
 		sqlSessionTemplate.insert("springboard.board.dao.BoardDAO.insert", boardVO);
+	}
+
+	@Override
+	public void increaeCount(int no) {
+		sqlSessionTemplate.update("springboard.board.dao.BoardDAO.increaseCount", no);
 	}
 
 }

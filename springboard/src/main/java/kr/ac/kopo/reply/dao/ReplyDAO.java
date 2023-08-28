@@ -15,6 +15,7 @@ public class ReplyDAO {
 	SqlSessionTemplate sqlSessionTemplate;
 
 	public void insertReply(ReplyVO replyVO) {
+		
 		sqlSessionTemplate.insert("springboard.replyDAO.insertReply", replyVO);
 	}
 

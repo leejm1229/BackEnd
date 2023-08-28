@@ -19,7 +19,6 @@ public class LoginInterceptor implements HandlerInterceptor {
         // request.getQueryString();
         // handler;
         System.out.println(request.getServletPath() + request.getContextPath() + request.getQueryString() + handler);
-        System.out.println("preHandle 동작입니다.");
         HttpSession session = request.getSession();
         MemberVO memberVO = (MemberVO)session.getAttribute("currentUser");
         if(memberVO == null) {
@@ -29,19 +28,12 @@ public class LoginInterceptor implements HandlerInterceptor {
         }else {
             return true;
         }
-        
-        // 로그인 안했으면, 로그인 하세요 -> login.jsp로 가세용~
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
             ModelAndView modelAndView) throws Exception {
-        // TODO Auto-generated method stub
-        System.out.println("postHandle 동작입니다.");
         HandlerInterceptor.super.postHandle(request, response, handler, modelAndView);
     }
-    
-    
-    
     
 }
