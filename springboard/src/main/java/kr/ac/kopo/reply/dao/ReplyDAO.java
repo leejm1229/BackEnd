@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.ac.kopo.board.dao.BoardDAO;
 import kr.ac.kopo.reply.vo.ReplyVO;
 
 @Repository
@@ -25,6 +26,7 @@ public class ReplyDAO {
 	}
 
 	public void deleteReplyByNo(int replyNo) {
+	
 		sqlSessionTemplate.delete("springboard.replyDAO.deleteReplyByNo", replyNo);
 	}
 }

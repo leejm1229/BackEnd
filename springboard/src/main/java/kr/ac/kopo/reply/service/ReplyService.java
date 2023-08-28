@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import kr.ac.kopo.board.dao.BoardDAO;
 import kr.ac.kopo.reply.dao.ReplyDAO;
@@ -18,9 +19,11 @@ public class ReplyService {
 	@Autowired
 	private BoardDAO boardDAO;
 
+	
+	@Transactional
 	public void insertReply(ReplyVO replyVO) {
 		replyDAO.insertReply(replyVO);
-		boardDAO.increaeCount(replyVO.getBoardNo());
+		boardDAO.increaseCount(replyVO.getBoardNo());
 	}
 
 	public List<ReplyVO> getReplybyBoardNo(int bno) {
@@ -28,7 +31,10 @@ public class ReplyService {
 		return replylist;
 	}
 	
-	public void deleteReplyByNo(int replyNo) {
+	
+	@Transactional
+	public void deleteReplyByNo(int boardNo, int replyNo) {
+		boardDAO.decreaseCount(boardNo);
 		replyDAO.deleteReplyByNo(replyNo);
 	}
 }

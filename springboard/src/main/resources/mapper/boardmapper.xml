@@ -27,4 +27,11 @@
 		set count = count + 1
 		where no = #{no}
 	</update>
+	
+	<update id="decreaseCount" parameterType="int">
+		update t_board
+		set count = count - 1
+		where no = #{no}
+	</update>
+	
 </mapper>
